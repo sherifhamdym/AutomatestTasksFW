@@ -40,8 +40,7 @@ public class FirstTaskTests extends TestCases {
     @Test(description = "Given I open Google Chrome, " +
             "When I navigate to [https://duckduckgo.com/], " +
             "Then I assert that the DuckDuckGo logo is displayed")
-    public void navigateToDuckDuckThenCheckLogoIsDisplayed()
-    {
+    public void navigateToDuckDuckThenCheckLogoIsDisplayed() {
         DuckDuckPage duckDuckPage = new DuckDuckPage(driver);
 
 //        String URL_duck = "https://duckduckgo.com/";
@@ -50,7 +49,30 @@ public class FirstTaskTests extends TestCases {
 //        bot.openURL(URL_duck);
 //        boolean actualResult = duckDuckPage.logoIsDisplayed();
 
-       boolean actual = duckDuckPage.openDuckDuckGoURL().logoIsDisplayed();
+        boolean actual = duckDuckPage.openDuckDuckGoURL().logoIsDisplayed();
         Assert.assertTrue(actual, "TC 2 Logo is not displayed");
+    }
+
+    /**
+     * Open Google Chrome
+     * Navigate to [<a href="https://duckduckgo.com/">...</a>]
+     * Search for [Selenium WebDriver]
+     * Assert that the link of the first result is [<a href="https://www.selenium.dev/documentation/webdriver/">...</a>]
+     * Close Google Chrome
+     */
+    @Test(description = "Given I am on the DuckDuckGo homepage, " +
+            "When I search for 'Selenium WebDriver', " +
+            "Then the first result should be 'https://www.selenium.dev/documentation/webdriver/'")
+    public void searchForQueryAndCheckFirstResultText() {
+
+        String TC3_searchValue = "Selenium WebDriver";
+        String TC3_expectedLink = "https://www.selenium.dev/documentation/webdriver/";
+
+
+        String actualResult = new DuckDuckPage(driver)
+                .openDuckDuckGoURL()
+                .searchFor(TC3_searchValue)
+                .getFirstResultLink();
+        Assert.assertEquals(actualResult, TC3_expectedLink, "TC 3 Link is not as expected");
     }
 }

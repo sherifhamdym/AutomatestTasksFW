@@ -5,7 +5,6 @@ import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
 
 import java.time.Duration;
-import java.util.List;
 
 public class Bot {
     private final Wait<WebDriver> wait;
@@ -29,14 +28,15 @@ public class Bot {
         return this;
     }
 
-    public Bot click(By by) {
-        wait.until(d -> {
-            d.findElement(by).click();
-            System.out.println("Clicked " + by);
-            return true;
-        });
-        return this;
-    }
+
+//    public Bot click(By by) {
+//        wait.until(d -> {
+//            d.findElement(by).click();
+//            System.out.println("Clicked " + by);
+//            return true;
+//        });
+//        return this;
+//    }
 
     public boolean isDisplayed(By by) {
         try {
@@ -63,14 +63,14 @@ public class Bot {
         return this;
     }
 
-    public Bot getText(By locator) {
-        wait.until(d -> {
-            String text = d.findElement(locator).getText();
-            System.out.println("Actual Text is " + text);
-            return true;
-        });
-        return this;
-    }
+//    public Bot getText(By locator) {
+//        wait.until(d -> {
+//            String text = d.findElement(locator).getText();
+//            System.out.println("Actual Text is " + text);
+//            return true;
+//        });
+//        return this;
+//    }
 
 
     public String getDomAttribute(By by, String attributeValue) {
@@ -80,25 +80,25 @@ public class Bot {
             return attribute;
         });
     }
-    public Bot uploadDocument(String filePath, By fileInputElement, By fileSubmitElement, By uploadedFile) {
-        wait.until(d -> {
-            d.findElement(fileInputElement).sendKeys(filePath);
-            d.findElement(fileSubmitElement).click();
-            WebElement successMessage = d.findElement(uploadedFile);
-            System.out.println("Uploaded document with message: " + successMessage.getText());
-            return true;
-        });
-        return this;
-    }
-    public String selectfromdropdownlist(By element, int listResultNumber) {
-
-       return  wait.until(d -> {
-           wait.until(x -> x.findElement(element));
-           List<WebElement> options = d.findElements(element);
-        String OptionNumberValue = options.get(listResultNumber).getText();
-        System.out.println("Selected option is : " + OptionNumberValue);
-        return OptionNumberValue;
-        });
-    }
+//    public Bot uploadDocument(String filePath, By fileInputElement, By fileSubmitElement, By uploadedFile) {
+//        wait.until(d -> {
+//            d.findElement(fileInputElement).sendKeys(filePath);
+//            d.findElement(fileSubmitElement).click();
+//            WebElement successMessage = d.findElement(uploadedFile);
+//            System.out.println("Uploaded document with message: " + successMessage.getText());
+//            return true;
+//        });
+//        return this;
+//    }
+//    public String selectfromdropdownlist(By element, int listResultNumber) {
+//
+//       return  wait.until(d -> {
+//           wait.until(x -> x.findElement(element));
+//           List<WebElement> options = d.findElements(element);
+//        String OptionNumberValue = options.get(listResultNumber).getText();
+//        System.out.println("Selected option is : " + OptionNumberValue);
+//        return OptionNumberValue;
+//        });
+//    }
 
 }
