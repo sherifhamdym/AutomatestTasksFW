@@ -1,6 +1,7 @@
 package tests;
 
 //import engine.Bot;
+
 import engine.Bot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -15,17 +16,26 @@ public abstract class TestCases {
     @BeforeMethod
     public void setUp() {
 
-        // driver initialization
+        // driver initialization for Chrome
         ChromeOptions options;
         options = new ChromeOptions();
         options.addArguments("start-maximized");
         options.setBrowserVersion("134");
-        options.setCapability("webSocketUrl", true);
+//        options.setCapability("webSocketUrl", true);
 //        options.setImplicitWaitTimeout(Duration.ofSeconds(5));
         driver = new ChromeDriver(options);
 
         // bot initialization
         bot = new Bot(driver);
+
+
+        // driver initialization for Firefox
+//        FirefoxOptions Foptions;
+//        Foptions = new FirefoxOptions();
+//        // Foptions.addArguments("--start-maximized");
+//        driver = new FirefoxDriver(Foptions);
+//        driver.manage().window().maximize();
+//        bot = new Bot(driver);
 
     }
 
