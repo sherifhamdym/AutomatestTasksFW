@@ -1,5 +1,7 @@
-package test;
+package tests;
 
+//import engine.Bot;
+import engine.Bot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -8,7 +10,7 @@ import org.testng.annotations.BeforeMethod;
 
 public abstract class TestCases {
     protected WebDriver driver;
-    //protected Bot bot;
+    protected Bot bot;
 
     @BeforeMethod
     public void setUp() {
@@ -23,7 +25,7 @@ public abstract class TestCases {
         driver = new ChromeDriver(options);
 
         // bot initialization
-       // bot = new Bot(driver);
+        bot = new Bot(driver);
 
     }
 
